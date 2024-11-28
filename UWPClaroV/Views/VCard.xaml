@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="UWPClaroV.Views.VCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPClaroV.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Estilos/EstilosVCard.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Padding="20">
+        <StackPanel x:Name="PanelEncabezado">
+            <Button Content="Volver" FontSize="16" Background="{StaticResource FondoNegro}" Foreground="{StaticResource ColorFuente2}"></Button>
+        </StackPanel>
+
+        <StackPanel x:Name="PanelPrevia">
+            <Grid>
+                <StackPanel x:Name="ContenedorInfoPrevia">
+                    <TextBlock x:Name="Titulo"></TextBlock>
+                    <TextBlock x:Name="Info"></TextBlock>
+                    <TextBlock x:Name="Descripcion"></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Reproducir" Style="{StaticResource EstiloBotonMedia}"></Button>
+                        <Button Content="Ver trailer" Style="{StaticResource EstiloBotonMedia}"></Button>
+                        <Button Content="Mi lista" Style="{StaticResource EstiloBotonMedia}"></Button>
+                        <Button Content="Compartir" Style="{StaticResource EstiloBotonMedia}"></Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="ContenedorBackgroundPrevia">
+                    <Image />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="PanelCarruselOtros">
+
+        </StackPanel>
+
+        <StackPanel x:Name="PanelCarruselTalentos">
+
+        </StackPanel>
+    </Grid>
+</Page>

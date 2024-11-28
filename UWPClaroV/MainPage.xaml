@@ -1,0 +1,131 @@
+﻿<Page
+    x:Class="UWPClaroV.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPClaroV"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource FondoNegro}"
+    xmlns:vm="using:UWPClaroV.ViewsModels">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos/EstilosMainPage.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="PanelEncabezado" Style="{StaticResource EstiloPanelEncabezado}" Grid.Row="0">
+            <ItemsControl ItemsSource="{Binding MenuItems}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding}" Style="{StaticResource EstiloBotonMenu}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <StackPanel x:Name="PanelContenido" Padding="30">
+                <StackPanel x:Name="PanelCarrusel" Margin="0,10">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    </StackPanel>
+                    <StackPanel x:Name="ContenedorCarrusel">
+                        <FlipView x:Name="FlipCarrusel" MaxHeight="400" Background="{StaticResource FondoNegro}" ItemsSource="{Binding ImagenesCarrusel}"
+                                  HorizontalAlignment="Center">
+                            <FlipView.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding NavigateToVCardViewCommand}" CommandParameter="{Binding Imagen}" Background="Transparent" HorizontalAlignment="Center">
+                                        <Image Source="{Binding Imagen}" Stretch="Uniform"/>
+                                    </Button>
+                                </DataTemplate>
+                            </FlipView.ItemTemplate>
+                        </FlipView>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="PanelCarruselPremium" Margin="0,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="PREMIUM" FontSize="17" Grid.Column="0"></TextBlock>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <Button Style="{StaticResource ArrowPrev}" Click="ButtonNextCarruselPremium_Click"></Button>
+                            <Button Style="{StaticResource ArrowNext}" Click="ButtonBackCarruselPremium_Click"></Button>
+                        </StackPanel>
+                    </Grid>
+                    <ScrollViewer x:Name="ContenedorCarruselPremium" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding ImagenesCarruselPremiun}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Command="{Binding NavigateToVCardViewCommand}" CommandParameter="{Binding Imagen}" Background="Transparent" HorizontalAlignment="Center">
+                                            <Image Source="{Binding Imagen}" Stretch="Uniform" MaxHeight="250" Margin="10,15"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+
+                <StackPanel x:Name="PanelCarruselRecomendacion" Margin="0,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Claro video te recomienda" FontSize="17" Grid.Column="0"></TextBlock>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <Button Style="{StaticResource ArrowPrev}" Click="ButtonNextCarruselRecomendacion_Click"></Button>
+                            <Button Style="{StaticResource ArrowNext}" Click="ButtonBackCarruselRecomendacion_Click"></Button>
+                        </StackPanel>
+                    </Grid>
+                    <ScrollViewer x:Name="ContenedorCarruselRecomendacion" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding ImagenesCarruselRecomendacion}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Command="{Binding NavigateToVCardViewCommand}" CommandParameter="{Binding Imagen}" Background="Transparent" HorizontalAlignment="Center">
+                                            <Image Source="{Binding Imagen}" Stretch="Uniform" MaxHeight="400" Margin="10,15"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
